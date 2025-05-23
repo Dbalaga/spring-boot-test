@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-boot-demo
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/
+      database: spring
+      auto-index-creation: true
+
