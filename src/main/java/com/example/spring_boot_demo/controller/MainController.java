@@ -3,6 +3,9 @@ package com.example.spring_boot_demo.controller;
 import com.example.spring_boot_demo.model.Student;
 import com.example.spring_boot_demo.service.MainService;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainController {
+  private static final Logger log = LoggerFactory.getLogger(MainController.class);
   @Autowired MainService mainService;
 
   @GetMapping("/test")
@@ -20,7 +24,7 @@ public class MainController {
   @GetMapping("/testMongo")
   public ResponseEntity<String> testMongoDb() {
     long numOfDocs = mainService.testMongodb();
-    System.out.println("num of Documents in a collection are::" + numOfDocs);
+    log.info("Number of documents in student collections{}",numOfDocs);
     return ResponseEntity.ok("Mongo Connection Success...");
   }
 
